@@ -1,0 +1,20 @@
+CREATE DATABASE PersonalAccountManagement;
+
+USE PersonalAccountManagement;
+
+CREATE TABLE Users (
+    UserID INT AUTO_INCREMENT PRIMARY KEY,
+    Username VARCHAR(50) NOT NULL,
+    Password VARCHAR(255) NOT NULL,
+    Email VARCHAR(100),
+    CreatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE Accounts (
+    AccountID INT AUTO_INCREMENT PRIMARY KEY,
+    UserID INT,
+    AccountName VARCHAR(100) NOT NULL,
+    Balance DECIMAL(10, 2) DEFAULT 0.00,
+    CreatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (UserID) REFERENCES Users(UserID)
+);
